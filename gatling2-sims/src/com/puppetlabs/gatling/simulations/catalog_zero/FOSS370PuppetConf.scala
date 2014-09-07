@@ -57,8 +57,8 @@ class FOSS370PuppetConf extends Simulation {
         val REPETITION_COUNTER: String = "repetitionCounter"
         val NUM_AGENTS: Int = 20
         val NUM_REPETITIONS: Int = 1000
-        val SLEEP_DURATION: FiniteDuration = 10 seconds
-        val RAMP_UP_DURATION: FiniteDuration = 1 minutes
+        val SLEEP_DURATION: FiniteDuration = 20 seconds
+        val RAMP_UP_DURATION: FiniteDuration = 2 minutes
 
         def addSleeps(chain:ChainBuilder, totalNumReps:Int): ChainBuilder = {
           // This is kind of a dirty hack. Here's the deal.
