@@ -19,7 +19,8 @@ class FOSS370PuppetConf extends Simulation {
 
 	val headers_108 = Map(
 		"""Accept""" -> """pson, yaml""",
-		"""Content-Type""" -> """text/pson""")
+		"""Content-Type""" -> """text/pson""",
+                """Connection""" -> """close""")
 
     val uri1 = """https://puppet-master:8140/production"""
 
@@ -56,8 +57,8 @@ class FOSS370PuppetConf extends Simulation {
         val REPETITION_COUNTER: String = "repetitionCounter"
         val NUM_AGENTS: Int = 20
         val NUM_REPETITIONS: Int = 1000
-        val SLEEP_DURATION: FiniteDuration = 5 seconds
-        val RAMP_UP_DURATION: FiniteDuration = 10 minutes
+        val SLEEP_DURATION: FiniteDuration = 10 seconds
+        val RAMP_UP_DURATION: FiniteDuration = 1 minutes
 
         def addSleeps(chain:ChainBuilder, totalNumReps:Int): ChainBuilder = {
           // This is kind of a dirty hack. Here's the deal.
