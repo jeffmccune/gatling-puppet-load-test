@@ -9,6 +9,7 @@
     "ip": "10.16.150.21"
   },
   "steps": [
+    "cobbler-provision",
     {"install": "3.3"},
     {"simulate": {
         "id": "PE33_vanilla_1000",
