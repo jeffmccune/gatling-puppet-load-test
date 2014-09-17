@@ -1,11 +1,11 @@
 package com.puppetlabs.gatling.runner
 
-import com.excilys.ebi.gatling.app.Gatling
+import io.gatling.app.Gatling
 import com.puppetlabs.gatling.config.PuppetGatlingConfig
 
 /**
  * This object simply provides a `main` method that wraps
- * [[com.excilys.ebi.gatling.app.Gatling]].main, which
+ * [[io.gatling.app.Gatling]].main, which
  * allows us to do some configuration and setup before
  * Gatling launches.
  */

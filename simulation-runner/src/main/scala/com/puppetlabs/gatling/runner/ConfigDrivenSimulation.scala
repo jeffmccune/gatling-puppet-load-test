@@ -1,12 +1,11 @@
 package com.puppetlabs.gatling.runner
 
-import com.excilys.ebi.gatling.core.scenario.configuration.Simulation
-import com.excilys.ebi.gatling.core.Predef._
-import com.excilys.ebi.gatling.http.Predef._
-import akka.util.duration._
-import bootstrap._
+import io.gatling.core.scenario.configuration.Simulation
+import io.gatling.core.Predef._
+import io.gatling.http.Predef._
+import scala.concurrent.duration._
 import com.puppetlabs.gatling.config.PuppetGatlingConfig
-import com.excilys.ebi.gatling.core.structure.{ChainBuilder}
+import io.gatling.core.structure.{ChainBuilder}
 
 /**
  * This class is the "main" Simulation class that we'll always point
