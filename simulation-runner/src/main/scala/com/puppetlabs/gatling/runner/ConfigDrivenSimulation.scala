@@ -51,7 +51,7 @@ class ConfigDrivenSimulation extends Simulation {
 
   val config = PuppetGatlingConfig.configuration
 
-  val httpConf = httpConfig
+  val httpConf = http
     .baseURL(config.baseUrl)
     .acceptHeader("pson, b64_zlib_yaml, yaml, raw")
     .connection("close")
