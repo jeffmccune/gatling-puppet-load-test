@@ -115,5 +115,5 @@ class PE28RecursiveCopyCent5 extends com.puppetlabs.gatling.runner.SimulationWit
 						.body(RawFileBody("PE28RecursiveCopyCent5_request_19.txt"))
 			)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

@@ -51,5 +51,5 @@ class FOSS322VanillaCent6 extends SimulationWithScenario {
     .body(RawFileBody("FOSS322VanillaCent6_request_4.txt"))
   )
 
-  setUp(scn.users(1).protocolConfig(httpConf))
+  setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

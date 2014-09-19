@@ -687,5 +687,5 @@ class PE33_ConsolePerfTest extends com.puppetlabs.gatling.runner.SimulationWithS
 		.exec(
 			chain_0,			chain_1,			chain_2		)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

@@ -108,5 +108,5 @@ class PE28VanillaCent5 extends com.puppetlabs.gatling.runner.SimulationWithScena
 						.body(RawFileBody("PE28VanillaCent5_request_18.txt"))
 			)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

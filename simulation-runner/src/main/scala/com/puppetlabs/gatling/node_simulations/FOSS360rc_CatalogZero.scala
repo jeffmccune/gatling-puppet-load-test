@@ -686,5 +686,5 @@ class FOSS360rc_CatalogZero extends com.puppetlabs.gatling.runner.SimulationWith
 		.exec(
 			chain_0,			chain_1,			chain_2		)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

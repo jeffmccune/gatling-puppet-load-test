@@ -64,5 +64,5 @@ class FOSS360rc_CustomParser extends com.puppetlabs.gatling.runner.SimulationWit
 	val scn = scenario("Scenario Name")
 		.exec(	chain_0	)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

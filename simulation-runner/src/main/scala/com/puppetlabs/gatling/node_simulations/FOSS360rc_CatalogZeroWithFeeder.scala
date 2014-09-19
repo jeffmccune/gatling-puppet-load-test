@@ -681,12 +681,12 @@ class FOSS360rc_CatalogZeroWithFeeder extends com.puppetlabs.gatling.runner.Simu
 		.exec(http("report")
 					.put("/production/report/${node}")
 					.headers(headers_108)
-					.body(scala.io.Source.fromFile("./user-files/request-bodies/FOSS360rc_CatalogZero_request_108.feeder.txt").mkString)
+					.body(StringBody(scala.io.Source.fromFile("./user-files/request-bodies/FOSS360rc_CatalogZero_request_108.feeder.txt").mkString))
 			)
 
 	val scn = scenario("Scenario Name")
 		.exec(
 			chain_0,			chain_1,			chain_2		)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

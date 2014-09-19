@@ -61,5 +61,5 @@ class PE3BigTemplateHeavyCatalogCent5 extends SimulationWithScenario {
 						.body(RawFileBody("PE3BigTemplateHeavyCatalogCent5_request_5.txt"))
 			)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

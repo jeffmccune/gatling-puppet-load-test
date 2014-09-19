@@ -695,12 +695,12 @@ class PE33_ConsolePerfTestWithFeeder extends com.puppetlabs.gatling.runner.Simul
     		.exec(http("report")
 					.put("/production/report/${node}")
 					.headers(headers_110)
-					.body(scala.io.Source.fromFile("./user-files/request-bodies/PE33_ConsolePerfTestWithFeeder_request_110.txt").mkString)
+					.body(StringBody(scala.io.Source.fromFile("./user-files/request-bodies/PE33_ConsolePerfTestWithFeeder_request_110.txt").mkString))
 			)
 
 	val scn = scenario("Scenario Name")
 		.exec(
 			chain_0,			chain_1,			chain_2		)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

@@ -61,5 +61,5 @@ class PE3VanillaCent5 extends SimulationWithScenario {
 						.body(RawFileBody("PE3VanillaCent5_request_5.txt"))
 			)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

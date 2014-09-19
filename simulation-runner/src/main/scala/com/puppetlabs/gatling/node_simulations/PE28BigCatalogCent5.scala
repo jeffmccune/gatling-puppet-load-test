@@ -108,5 +108,5 @@ class PE28BigCatalogCent5 extends com.puppetlabs.gatling.runner.SimulationWithSc
 						.body(RawFileBody("PE28BigCatalogCent5_request_18.txt"))
 			)
 
-	setUp(scn.users(1).protocolConfig(httpConf))
+	setUp(scn.inject(atOnceUsers(1)).protocols(httpConf))
 }

@@ -1,6 +1,6 @@
 package com.puppetlabs.gatling.runner
 
-import io.gatling.core.scenario.configuration.Simulation
+import io.gatling.core.scenario.Simulation
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scala.concurrent.duration._
@@ -32,16 +32,16 @@ class ConfigDrivenSimulation extends Simulation {
     // which basically just sets a session variable to check to see if
     // we are on the final repetition, and if not, sleep for 30 mins.
     chain.exec((session: Session) => {
-      val repetitionCount = session.getAttributeAsOption[Int](REPETITION_COUNTER).getOrElse(0) + 1
+      val repetitionCount = session(REPETITION_COUNTER).asOption[Int].getOrElse(0) + 1
       println("Agent " + session.userId +
         " completed " + repetitionCount + " of " + totalNumReps + " repetitions.")
-      session.setAttribute(REPETITION_COUNTER, repetitionCount)
-    }).doIf((session) => session.getTypedAttribute[Int](REPETITION_COUNTER) < totalNumReps) {
+      session.set(REPETITION_COUNTER, repetitionCount)
+    }).doIf((session) => session(REPETITION_COUNTER).as[Int] < totalNumReps) {
       exec((session) => {
         println("This is not the last repetition; sleeping.")
         session
       }).pause(30 minutes)
-    }.doIf((session) => session.getTypedAttribute[Int](REPETITION_COUNTER) >= totalNumReps) {
+    }.doIf((session) => session(REPETITION_COUNTER).as[Int] >= totalNumReps) {
       exec((session) => {
         println("That was the last repetition.  Not sleeping.")
         session
@@ -84,9 +84,8 @@ class ConfigDrivenSimulation extends Simulation {
         group((session) => simulationClass.getSimpleName) {
           chainWithLongRunning
         }
-      }.users(numInstances)
-      .ramp(rampUpDuration)
-      .protocolConfig(httpConf)
+      }.inject(rampUsers(numInstances) over (rampUpDuration))
+      .protocols(httpConf)
   })
 
   scns.foreach(setUp(_))
