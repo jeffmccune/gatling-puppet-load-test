@@ -2,6 +2,7 @@ package com.puppetlabs.gatling.runner
 
 import io.gatling.app.Gatling
 import com.puppetlabs.gatling.config.PuppetGatlingConfig
+import io.gatling.core.scenario.Simulation
 
 /**
  * This object simply provides a `main` method that wraps
@@ -30,6 +31,6 @@ object PuppetGatlingRunner {
     // appears just below the title in the HTML reports.
     System.setProperty("gatling.core.runDescription", config.runDescription)
 
-    Gatling.main(args);
+    Gatling.main(args)
   }
 }

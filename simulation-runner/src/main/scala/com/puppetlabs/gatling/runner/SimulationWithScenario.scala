@@ -1,5 +1,7 @@
 package com.puppetlabs.gatling.runner
 
+import io.gatling.core.scenario._
+import io.gatling.core.structure.ScenarioBuilder
 import io.gatling.core.scenario.Simulation
 import io.gatling.core.structure.ScenarioBuilder
 

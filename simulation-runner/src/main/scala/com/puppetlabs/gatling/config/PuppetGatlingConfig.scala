@@ -1,9 +1,12 @@
 package com.puppetlabs.gatling.config
 
+import javax.jms.IllegalStateException
+
 import scala.util.parsing.json.JSON
 import com.puppetlabs.json._
 import com.puppetlabs.gatling.runner.SimulationWithScenario
 import java.io.File
+
 
 class PuppetGatlingConfig(configFilePath: String) {
 
