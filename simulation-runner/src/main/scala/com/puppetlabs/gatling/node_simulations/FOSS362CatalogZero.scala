@@ -12,7 +12,7 @@ import io.gatling.core.structure.{ChainBuilder}
 class FOSS362CatalogZero extends SimulationWithScenario {
 
 	val httpProtocol = http
-		.baseURL("https://puppet-master:8140")
+		.baseURL("https://pe-centos6.localdomain:8140")
 		.disableFollowRedirect
 		.disableAutoReferer
 		.acceptHeader("""pson, yaml, b64_zlib_yaml, raw""")
@@ -24,7 +24,7 @@ class FOSS362CatalogZero extends SimulationWithScenario {
 		"""Accept""" -> """pson, yaml""",
 		"""Content-Type""" -> """text/pson""")
 
-    val uri1 = """https://puppet-master:8140/production"""
+    val uri1 = """https://pe-centos6.localdomain:8140/production"""
 
 	val chain_0 = exec(http("node")
 			.get("""/production/node/puppet-agent?fail_on_404=true&transaction_uuid=38809b39-1d2e-43f1-97e2-b7ea863133e7"""))
