@@ -46,10 +46,10 @@ def pe_register_nodes(host, nodes)
       # to a config file, because this assumes we'll only ever be doing testing
       # against PE.  (Although all of this stuff assumes we have at least the
       # dashboard and rake tasks.)
-      #on host, "#{pe_rake_cmd} node:classes name=#{n.name} classes=pe_accounts,pe_mcollective"
-      #n.classes.each do |c|
-      #  on host, "#{pe_rake_cmd} node:addclass name=#{n.name} class=#{c}"
-      #end
+      on host, "#{pe_rake_cmd} node:classes name=#{n.name} classes=pe_accounts"
+      n.classes.each do |c|
+        on host, "#{pe_rake_cmd} node:addclass name=#{n.name} class=#{c}"
+      end
 
       # Here we'll just print out the final list of classes for the node so that
       # it's visible in the log.
