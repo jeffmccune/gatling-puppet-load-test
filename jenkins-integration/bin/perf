@@ -149,12 +149,12 @@ module Puppet
         puts "Executing: " + cmd
         target_pems = %x{#{cmd}}
         target_pems.split("\n").each do |pem|
-          pem_path = pem.chomp(pem_name)
+          pem_path = pem.chomp("/"+pem_name)
           sub_dir = git_crypto_dir + '/' + pem_path.rpartition('/')[2]
-          cmd = %Q{cp #{sub_dir}/puppet-agent.pem #{pem_path}puppet-agent.pem}
+          cmd = %Q{cp #{sub_dir}/puppet-agent.pem #{pem_path}/puppet-agent.pem}
           puts "Executing: " + cmd
           puts %x{#{cmd}}
-          cmd = %Q{cp #{pem} #{pem_path}puppet-master.pem}
+          cmd = %Q{cp #{pem} #{pem_path}/puppet-master.pem}
           puts "Executing: " + cmd
           puts %x{#{cmd}}
         end
