@@ -130,6 +130,7 @@ module Puppet
         puts arguments.to_s
         master_ssl_dir = "/etc/puppetlabs/puppet/ssl"
         config_dir = "../simulation-runner/config"
+        git_crypto_dir = config_dir + "/ssl/pems/4096"
         jks_dir = config_dir + "/ssl"
         new_jks_dir = config_dir + "/tmp/jks-gen/ssl"
         relative_pems_dir = config_dir + "/ssl/pems"
@@ -148,10 +149,12 @@ module Puppet
         puts "Executing: " + cmd
         target_pems = %x{#{cmd}}
         target_pems.split("\n").each do |pem|
-          cmd = %Q{cp #{pem} #{pem.chomp(pem_name)}puppet-agent.pem}
+          pem_path = pem.chomp(pem_name)
+          sub_dir = git_crypto_dir + '/' + pem_path.rpartition('/')[2]
+          cmd = %Q{cp #{sub_dir} #{pem_path}puppet-agent.pem}
           puts "Executing: " + cmd
           puts %x{#{cmd}}
-          cmd = %Q{cp #{pem} #{pem.chomp(pem_name)}puppet-master.pem}
+          cmd = %Q{cp #{pem} #{pem_path}puppet-master.pem}
           puts "Executing: " + cmd
           puts %x{#{cmd}}
         end
