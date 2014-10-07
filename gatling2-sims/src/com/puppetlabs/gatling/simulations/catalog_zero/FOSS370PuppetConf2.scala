@@ -7,7 +7,7 @@ import io.gatling.http.Predef._
 import io.gatling.jdbc.Predef._
 import io.gatling.core.structure.{ChainBuilder}
 
-class FOSS370PuppetConf extends Simulation {
+class FOSS370PuppetConf2 extends Simulation {
 
 	val httpProtocol = http
 		.baseURL("https://puppet-master:8140")
@@ -55,10 +55,10 @@ class FOSS370PuppetConf extends Simulation {
 	//setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
 
         val REPETITION_COUNTER: String = "repetitionCounter"
-        val NUM_AGENTS: Int = 2 
+        val NUM_AGENTS: Int = 30 
         val NUM_REPETITIONS: Int = 1000
-        val SLEEP_DURATION: FiniteDuration = 0 seconds
-        val RAMP_UP_DURATION: FiniteDuration = 0.5 minutes
+        val SLEEP_DURATION: FiniteDuration = 20 seconds
+        val RAMP_UP_DURATION: FiniteDuration = 1 minutes
 
         def addSleeps(chain:ChainBuilder, totalNumReps:Int): ChainBuilder = {
           // This is kind of a dirty hack. Here's the deal.
